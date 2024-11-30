@@ -13,8 +13,8 @@ public class DriveTrain {
 
     HardwareMap hardwareMap;
 
-    public void init(HardwareMap ahwMap) {
-        hardwareMap = ahwMap;
+    public void DT_init(HardwareMap hwMap) {
+        hardwareMap = hwMap;
 
         // Declare motors, make them run w/o encoder
         DcMotor frontLeftMotor = hardwareMap.dcMotor.get("frontLeftMotor");
@@ -25,7 +25,6 @@ public class DriveTrain {
         backLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         frontRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         backRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-
 
         // Make the motors orientation right
         frontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -41,16 +40,8 @@ public class DriveTrain {
         frontLeftMotor.setPower(0);
         backLeftMotor.setPower(0);
         frontRightMotor.setPower(0);
-        backRightMotor.setPower(0);
+        backRightMotor.setPower(0);}
 
-    }
-
-    public void power(double output){
-        frontLeftMotor.setPower(-output);
-        backLeftMotor.setPower(-output);
-        frontRightMotor.setPower(output);
-        backRightMotor.setPower(output);
-    }
     public void moveRobot(double y, double x, double rx){
         // Denominator is the largest motor power (absolute value) or 1
         // This ensures all the powers maintain the same ratio,adb
