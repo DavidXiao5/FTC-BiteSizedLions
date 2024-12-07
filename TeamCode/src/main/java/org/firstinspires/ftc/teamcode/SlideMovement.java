@@ -16,8 +16,8 @@ public class SlideMovement {
         hardwareMap = hwMap;
 
         // Declare motors, make them run w/ encoder
-        DcMotor ss = hardwareMap.dcMotor.get("ss");
-        DcMotor sr = hardwareMap.dcMotor.get("sr");
+        DcMotor ss = hardwareMap.dcMotor.get("slideSpinner");
+        DcMotor sr = hardwareMap.dcMotor.get("slideRaiser");
         ss.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         sr.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
