@@ -5,24 +5,14 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 
 public class Intake {
-    public Servo intakeServo;
 
-    HardwareMap hardwareMap;
-
-    // Initializes all the motors needed for the intake
-    public void Intake_init(HardwareMap hwMap){
-        hardwareMap = hwMap;
+    public void runIntake(boolean a_button, boolean b_button, HardwareMap hardwareMap){
 
         // Declare servo
-        Servo intakeServo = hardwareMap.servo.get("intake");}
+        Servo intakeServo = hardwareMap.servo.get("intake");
 
-    // Makes gamepad be able to intake
-    public void GetSample(boolean a_button){
         if (a_button){
-            intakeServo.setPosition(1000);}}
+            intakeServo.setPosition(1000);}
 
-
-    // Makes gamepad be able to outtake
-    public void ScoreSample(boolean b_button){
         if (b_button){
             intakeServo.setPosition(-1000);}}}

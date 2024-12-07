@@ -2,23 +2,23 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 
 @TeleOp
 public class teleTest extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
-        // Get code from other classes
+        // Init the other modules
         DriveTrain drivetrain = new DriveTrain();
-        //SlideMovement slideMovement = new SlideMovement();
-        //Intake intake = new Intake();
+        Intake intake = new Intake();
+        SlideMovement slivemovement = new SlideMovement();
 
+        // Wait for start
         waitForStart();
 
         if (isStopRequested()) return;
 
+        // Actual OpMode
         while (opModeIsActive()) {
             // Declares variables for the gamepad
 
@@ -27,8 +27,25 @@ public class teleTest extends LinearOpMode {
             double x = gamepad1.left_stick_x * 1.1;
             double rx = gamepad1.right_stick_x;
 
+            // Slide Buttons
+            double lt = gamepad1.left_trigger;
+            boolean lb = gamepad1.left_bumper;
+            double rt = gamepad1.right_trigger;
+            boolean rb = gamepad1.right_bumper;
+
+            // Intake Buttons
+            boolean a = gamepad1.a;
+            boolean b = gamepad1.b;
+
             // Moves the robot
             drivetrain.moveRobot(y, x, rx, hardwareMap);
+
+            // Moves the slides
+            slivemovement.raiseSlides(rb, rt, hardwareMap);
+            slivemovement.spinSlides(lb, lt, hardwareMap);
+
+            // Intake
+            intake.runIntake(a, b, hardwareMap);
         }
     }
 }
