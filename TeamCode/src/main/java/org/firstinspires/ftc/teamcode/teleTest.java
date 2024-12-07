@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 public class teleTest extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
+
         // Init the other modules
         DriveTrain drivetrain = new DriveTrain();
         Intake intake = new Intake();
@@ -36,6 +37,8 @@ public class teleTest extends LinearOpMode {
             // Intake Buttons
             boolean a = gamepad1.a;
             boolean b = gamepad1.b;
+
+            // Actual code now
 
             // Moves the robot
             drivetrain.moveRobot(y, x, rx, hardwareMap);
