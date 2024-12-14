@@ -6,11 +6,10 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @Autonomous
-public class basicAuto extends LinearOpMode{
+public class rightAuto extends LinearOpMode{
     @Override
     public void runOpMode() throws InterruptedException {
 
-        Gyro gyro = new Gyro();
         // Declare motors, make them run w/o encoder
         DcMotor frontLeftMotor = hardwareMap.dcMotor.get("frontLeftMotor");
         DcMotor backLeftMotor = hardwareMap.dcMotor.get("backLeftMotor");
@@ -46,8 +45,6 @@ public class basicAuto extends LinearOpMode{
             backRightMotor.setPower(0.5);
 
             Thread.sleep(1500);
-
-            gyro.turn(90, hardwareMap);
 
             break;
         }
