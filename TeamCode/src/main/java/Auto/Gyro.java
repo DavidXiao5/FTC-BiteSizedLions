@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package Auto;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
@@ -12,9 +12,11 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 
 public class Gyro {
+    // Declare some stuff
     private Orientation lastAngles = new Orientation();
     private double currAngle = 0.0;
 
+    // Resets the gyro
     public void reset_Gyro(HardwareMap hardwareMap) {
         BNO055IMU imu;
 
@@ -42,6 +44,7 @@ public class Gyro {
         currAngle = 0;
     }
 
+    // Gets the angle
     public double get_Angle(HardwareMap hardwareMap) {
         BNO055IMU imu;
 
@@ -72,6 +75,7 @@ public class Gyro {
         return currAngle;
     }
 
+    // Turn
     public void turn(double degrees, HardwareMap hardwareMap){
         reset_Gyro(hardwareMap);
 
@@ -88,8 +92,8 @@ public class Gyro {
             frontRightMotor.setPower(motorPower);
             backLeftMotor.setPower(-motorPower);
             backRightMotor.setPower(motorPower);
+            error = degrees - get_Angle(hardwareMap);
         }
-
     }
 }
 

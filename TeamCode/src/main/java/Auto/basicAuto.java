@@ -1,9 +1,10 @@
-package org.firstinspires.ftc.teamcode;
+package Auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous
 public class basicAuto extends LinearOpMode{
@@ -11,6 +12,8 @@ public class basicAuto extends LinearOpMode{
     public void runOpMode() throws InterruptedException {
 
         Gyro gyro = new Gyro();
+        ElapsedTime timer = new ElapsedTime();
+
         // Declare motors, make them run w/o encoder
         DcMotor frontLeftMotor = hardwareMap.dcMotor.get("frontLeftMotor");
         DcMotor backLeftMotor = hardwareMap.dcMotor.get("backLeftMotor");
@@ -40,16 +43,23 @@ public class basicAuto extends LinearOpMode{
 
         waitForStart();
         while (opModeIsActive()){
-            backLeftMotor.setPower(0.5);
-            frontRightMotor.setPower(0.5);
-            frontLeftMotor.setPower(0.5);
-            backRightMotor.setPower(0.5);
+            timer.reset();
+            while (timer.milliseconds()<2000){
+                double power = 0;
+                double maxpower = 0.5;
+                while (power < maxpower) {
+                    backLeftMotor.setPower(power);
+                    frontRightMotor.setPower(power);
+                    frontLeftMotor.setPower(power);
+                    backRightMotor.setPower(power);
 
-            Thread.sleep(1500);
+                    power += 0.01;
+                }
 
-            gyro.turn(90, hardwareMap);
+                gyro.turn(90, hardwareMap);
 
-            break;
+                break;
+            }
         }
     }
 }
