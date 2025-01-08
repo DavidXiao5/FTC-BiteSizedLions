@@ -51,12 +51,14 @@ public class teleTest extends LinearOpMode {
                 double rx = gamepad1.right_stick_x * .5;
                 drivetrain.moveRobot(y, x, rx, hardwareMap);
             }
+
             if (gamepad1.right_bumper) {
                 double y = -gamepad1.left_stick_y * .25;
                 double x = gamepad1.left_stick_x * .275;
                 double rx = gamepad1.right_stick_x * .25;
                 drivetrain.moveRobot(y, x, rx, hardwareMap);
             }
+
             else {
                 double y = -gamepad1.left_stick_y;
                 double x = gamepad1.left_stick_x * 1.1;
