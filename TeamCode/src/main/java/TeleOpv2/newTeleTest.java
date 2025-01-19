@@ -17,7 +17,6 @@ public class newTeleTest extends LinearOpMode {
 
         DcMotor pivot = hardwareMap.dcMotor.get("pivot");
         pivot.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        double position = pivot.getCurrentPosition();
         telemetry.update();
 
         // Actual OpMode
@@ -30,7 +29,6 @@ public class newTeleTest extends LinearOpMode {
             }
             else{
                 pivot.setPower(0);
-                System.out.println("e");
             }
         }
     }
