@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
-@TeleOp()
+@TeleOp
 public class newTeleTest extends LinearOpMode {
 
     @Override //Overrides methods of the superclass
@@ -18,6 +18,7 @@ public class newTeleTest extends LinearOpMode {
 
         DriveTrainv2 drivetrain = new DriveTrainv2();
 
+        // Setting up the motors
         DcMotor slides = hardwareMap.get(DcMotor.class, "slidesMotor");
         DcMotor pivot = hardwareMap.get(DcMotor.class, "pivot");
 
@@ -56,28 +57,11 @@ public class newTeleTest extends LinearOpMode {
             }
 
 
-            // Slides
-            boolean rb = gamepad1.right_bumper;
-            boolean lb = gamepad1.left_bumper;
-
-            if(rb && slides.getCurrentPosition() < 3000){ // If the Right Button is pressed and it's under the maximum
-                slides.setPower(0.2);
-
-            }
-            else if(lb && slides.getCurrentPosition() > -20){ // If the Left Button is pressed and it's over the minimum
-                slides.setPower(-0.2);
-
-            }
-            else{
-                slides.setPower(0);
-            }
-
-
             // Pivot
             double rt = gamepad1.right_trigger;
             double lt = gamepad1.left_trigger;
 
-            if(pivot.getCurrentPosition() < 1500 && pivot.getCurrentPosition() > 0) {
+            if (pivot.getCurrentPosition() < 1500 && pivot.getCurrentPosition() > 0) {
                 if (rt - lt < 0.5 && rt - lt > -0.5) {
                     pivot.setPower(rt - lt); //this sets the power to be the difference of the right button (pivoting forward - range of 0 to 1) and the back button (pivoting back - range of 0 to 1)
                 }
@@ -86,20 +70,18 @@ public class newTeleTest extends LinearOpMode {
             // Claw Pivot
             boolean a = gamepad1.a;
             boolean b = gamepad1.b;
-            if(a){
+            if (a) {
                 cpivot.setPosition(1);
-            }
-            else if(b){
+            } else if (b) {
                 cpivot.setPosition(0);
             }
 
             // Claw
             boolean x_button = gamepad1.x;
             boolean y_button = gamepad1.y;
-            if(x_button){
+            if (x_button) {
                 claw.setPosition(1);
-            }
-            else if(y_button){
+            } else if (y_button) {
                 claw.setPosition(0);
             }
         }
