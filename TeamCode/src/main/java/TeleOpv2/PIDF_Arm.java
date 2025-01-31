@@ -10,7 +10,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 
 @Config
-@TeleOp
 public class PIDF_Arm extends OpMode {
     private PIDController controller;
 
@@ -28,7 +27,7 @@ public class PIDF_Arm extends OpMode {
         controller = new PIDController(p, i, d);
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        arm_motor = hardwareMap.get(DcMotorEx.class, "arm_motor0");
+        arm_motor = hardwareMap.get(DcMotorEx.class, "pivot");
         arm_motor.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
     }
 
@@ -42,7 +41,7 @@ public class PIDF_Arm extends OpMode {
         double power = pid + ff;
 
         arm_motor.setPower(power);
-
+        telemetry.addData("power", power);
         telemetry.addData("pos", armPos);
         telemetry.addData("target", target);
         telemetry.update();

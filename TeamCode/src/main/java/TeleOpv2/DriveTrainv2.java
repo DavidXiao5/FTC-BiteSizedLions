@@ -9,10 +9,10 @@ public class DriveTrainv2 {
     public void moveRobot(double y, double x, double rx, HardwareMap hardwareMap){
 
         // Declare motors, make them run w/o encoder
-        DcMotor frontLeft = hardwareMap.dcMotor.get("frontLeft");
-        DcMotor backLeft = hardwareMap.dcMotor.get("backLeft");
-        DcMotor frontRight = hardwareMap.dcMotor.get("frontRight");
-        DcMotor backRight = hardwareMap.dcMotor.get("backRight");
+        DcMotor frontLeft = hardwareMap.dcMotor.get("frontLeftMotor");
+        DcMotor backLeft = hardwareMap.dcMotor.get("backLeftMotor");
+        DcMotor frontRight = hardwareMap.dcMotor.get("frontRightMotor");
+        DcMotor backRight = hardwareMap.dcMotor.get("backRightMotor");
         frontLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         backLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         frontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -20,7 +20,6 @@ public class DriveTrainv2 {
 
         // Make the motors orientation right
         frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-        backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
 
         // Set ZeroPower to be brake to actively stop the robot
         frontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
